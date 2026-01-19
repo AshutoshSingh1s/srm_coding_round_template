@@ -67,6 +67,17 @@ def find_overloaded_users(events):
         set()
     """
     # TODO: Implement your solution here
+    for user_id, timestamp in events:
+        user_events[user_id].append(timestamp)
+    overloaded = set()
+    for user_id, timestamps in user_events.items():
+        timestamps.sort()
+        n = len(timestamps)
+        for i in range(n - 2):
+            if timestamps[i + 2] - timestamps[i] < 10:
+                overloaded.add(user_id)
+                break
+    return overloaded
     pass
 
 
