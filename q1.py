@@ -52,8 +52,32 @@ def first_stable_character(s):
         None
     """
     # TODO: Implement your solution here
-    pass
+  def first_stable_character(s):
+    n = len(s)
+    i = 0
 
+    while i < n:
+        ch = s[i]
+        start = i
+
+        while i < n and s[i] == ch:
+            i += 1
+        end = i
+
+        if end - start >= 2:
+            if ch not in s[:start] and ch not in s[end:]:
+                return ch
+
+    return None
+
+
+if __name__ == "__main__":
+    print(first_stable_character("abccba"))
+    print(first_stable_character("abc"))
+    print(first_stable_character("a"))
+    print(first_stable_character("aaabccddde"))
+    print(first_stable_character("aabbcc"))
+    pass
 
 if __name__ == "__main__":
     # Test your solution here
